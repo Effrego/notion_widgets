@@ -103,7 +103,8 @@
                 if (expression.includes('%')) {
                     expression = expression.replace(/(\d+(\.\d+)?)%/g, '(($1)/100)');
                 }
-                display.value = eval(expression);
+                const result = eval(expression);
+                display.value = `${expression} = ${result}`; // Show the full expression with result
             } catch {
                 display.value = 'Error';
             }
@@ -128,7 +129,7 @@
 
         display.addEventListener('input', (event) => {
             // Prevent manual edits in readonly mode
-            display.value = display.value.replace(/[^0-9+\-*/.%]/g, '');
+            display.value = display.value.replace(/[^0-9+\-*/.%= ]/g, '');
         });
     </script>
 </body>
