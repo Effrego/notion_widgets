@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <style>
+        @font-face {
+            font-family: 'BaronKuffner';
+            src: url('https://github.com/Effrego/notion_widgets/blob/main/Baron_Kuffner_RUS_BY_LYAJKA.otf?raw=true') format('opentype');
+        }
+
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -41,8 +46,9 @@
             gap: 5px;
         }
         .calculator-button {
-            padding: 7px;
-            font-size: 1em;
+            padding: 15px;
+            font-size: 1.2em;
+            font-family: 'BaronKuffner', sans-serif;
             border: none;
             border-radius: 4px;
             background: #6c63ff;
@@ -52,10 +58,6 @@
             display: flex;
             justify-content: center;
             align-items: center;
-        }
-        .calculator-button img {
-            max-width: 100%;
-            height: auto;
         }
         .calculator-button:hover {
             background: #5750d1;
@@ -72,19 +74,19 @@
     <div class="calculator">
         <input type="text" id="display" class="calculator-display" readonly />
         <div class="calculator-buttons">
-            <button class="calculator-button" onclick="appendValue('7')"><img src="https://github.com/Effrego/notion_widgets/blob/main/7.png?raw=true" alt="7"></button>
-            <button class="calculator-button" onclick="appendValue('8')"><img src="https://github.com/Effrego/notion_widgets/blob/main/8.png?raw=true" alt="8"></button>
-            <button class="calculator-button" onclick="appendValue('9')"><img src="https://github.com/Effrego/notion_widgets/blob/main/9.png?raw=true" alt="9"></button>
+            <button class="calculator-button" onclick="appendValue('7')">7</button>
+            <button class="calculator-button" onclick="appendValue('8')">8</button>
+            <button class="calculator-button" onclick="appendValue('9')">9</button>
             <button class="calculator-button" onclick="appendValue('/')">/</button>
-            <button class="calculator-button" onclick="appendValue('4')"><img src="https://github.com/Effrego/notion_widgets/blob/main/4.png?raw=true" alt="4"></button>
-            <button class="calculator-button" onclick="appendValue('5')"><img src="https://github.com/Effrego/notion_widgets/blob/main/5.png?raw=true" alt="5"></button>
-            <button class="calculator-button" onclick="appendValue('6')"><img src="https://github.com/Effrego/notion_widgets/blob/main/6.png?raw=true" alt="6"></button>
+            <button class="calculator-button" onclick="appendValue('4')">4</button>
+            <button class="calculator-button" onclick="appendValue('5')">5</button>
+            <button class="calculator-button" onclick="appendValue('6')">6</button>
             <button class="calculator-button" onclick="appendValue('*')">*</button>
-            <button class="calculator-button" onclick="appendValue('1')"><img src="https://github.com/Effrego/notion_widgets/blob/main/1.png?raw=true" alt="1"></button>
-            <button class="calculator-button" onclick="appendValue('2')"><img src="https://github.com/Effrego/notion_widgets/blob/main/2.png?raw=true" alt="2"></button>
-            <button class="calculator-button" onclick="appendValue('3')"><img src="https://github.com/Effrego/notion_widgets/blob/main/3.png?raw=true" alt="3"></button>
+            <button class="calculator-button" onclick="appendValue('1')">1</button>
+            <button class="calculator-button" onclick="appendValue('2')">2</button>
+            <button class="calculator-button" onclick="appendValue('3')">3</button>
             <button class="calculator-button" onclick="appendValue('-')">-</button>
-            <button class="calculator-button" onclick="appendValue('0')"><img src="https://github.com/Effrego/notion_widgets/blob/main/0.png?raw=true" alt="0"></button>
+            <button class="calculator-button" onclick="appendValue('0')">0</button>
             <button class="calculator-button" onclick="appendValue('.')">.</button>
             <button class="calculator-button" onclick="calculateResult()">=</button>
             <button class="calculator-button" onclick="appendValue('+')">+</button>
