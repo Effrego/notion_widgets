@@ -63,7 +63,7 @@
 </head>
 <body>
     <div class="calculator">
-        <input type="text" id="display" class="calculator-display" />
+        <input type="text" id="display" class="calculator-display" readonly />
         <div class="calculator-buttons">
             <button class="calculator-button" onclick="appendValue('7')">7</button>
             <button class="calculator-button" onclick="appendValue('8')">8</button>
@@ -106,14 +106,18 @@
 
         // Enable keyboard input
         document.addEventListener('keydown', (event) => {
-            if (event.key >= '0' && event.key <= '9' || ['+', '-', '*', '/', '.'].includes(event.key)) {
+            if (!isNaN(event.key) || ['+', '-', '*', '/', '.'].includes(event.key)) {
                 appendValue(event.key);
+                event.preventDefault();
             } else if (event.key === 'Enter') {
                 calculateResult();
+                event.preventDefault();
             } else if (event.key === 'Backspace') {
                 display.value = display.value.slice(0, -1);
+                event.preventDefault();
             } else if (event.key === 'Escape') {
                 clearDisplay();
+                event.preventDefault();
             }
         });
     </script>
