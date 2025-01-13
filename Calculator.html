@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator Widget</title>
+    <title>Keyboard-Only Calculator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -35,54 +35,11 @@
             padding: 10px;
             box-sizing: border-box;
         }
-        .calculator-buttons {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-        }
-        .calculator-button {
-            padding: 15px;
-            font-size: 1.2em;
-            border: none;
-            border-radius: 4px;
-            background: #6c63ff;
-            color: #fff;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .calculator-button:hover {
-            background: #5750d1;
-        }
-        .calculator-button.clear {
-            background: #ff6b6b;
-        }
-        .calculator-button.clear:hover {
-            background: #d15454;
-        }
     </style>
 </head>
 <body>
     <div class="calculator">
         <input type="text" id="display" class="calculator-display" readonly />
-        <div class="calculator-buttons">
-            <button class="calculator-button" onclick="appendValue('7')">7</button>
-            <button class="calculator-button" onclick="appendValue('8')">8</button>
-            <button class="calculator-button" onclick="appendValue('9')">9</button>
-            <button class="calculator-button" onclick="appendValue('/')">/</button>
-            <button class="calculator-button" onclick="appendValue('4')">4</button>
-            <button class="calculator-button" onclick="appendValue('5')">5</button>
-            <button class="calculator-button" onclick="appendValue('6')">6</button>
-            <button class="calculator-button" onclick="appendValue('*')">*</button>
-            <button class="calculator-button" onclick="appendValue('1')">1</button>
-            <button class="calculator-button" onclick="appendValue('2')">2</button>
-            <button class="calculator-button" onclick="appendValue('3')">3</button>
-            <button class="calculator-button" onclick="appendValue('-')">-</button>
-            <button class="calculator-button" onclick="appendValue('0')">0</button>
-            <button class="calculator-button" onclick="appendValue('.')">.</button>
-            <button class="calculator-button" onclick="calculateResult()">=</button>
-            <button class="calculator-button" onclick="appendValue('+')">+</button>
-            <button class="calculator-button clear" onclick="clearDisplay()">C</button>
-        </div>
     </div>
 
     <script>
@@ -106,10 +63,9 @@
 
         // Enable keyboard input
         document.addEventListener('keydown', (event) => {
-            if (!isNaN(event.key) || ['+', '-', '*', '/', '.'].includes(event.key)) {
+            if ((event.key >= '0' && event.key <= '9') || ['+', '-', '*', '/', '.'].includes(event.key)) {
                 appendValue(event.key);
-                event.preventDefault();
-            } else if (event.key === 'Enter') {
+            } else if (event.key === 'Enter' || event.key === '=') {
                 calculateResult();
                 event.preventDefault();
             } else if (event.key === 'Backspace') {
