@@ -63,7 +63,7 @@
 </head>
 <body>
     <div class="calculator">
-        <input type="text" id="display" class="calculator-display" readonly />
+        <input type="text" id="display" class="calculator-display" />
         <div class="calculator-buttons">
             <button class="calculator-button" onclick="appendValue('7')">7</button>
             <button class="calculator-button" onclick="appendValue('8')">8</button>
@@ -86,24 +86,39 @@
     </div>
 
     <script>
+        const display = document.getElementById('display');
+
         function appendValue(value) {
-            const display = document.getElementById('display');
             display.value += value;
         }
 
         function clearDisplay() {
-            const display = document.getElementById('display');
             display.value = '';
         }
 
         function calculateResult() {
-            const display = document.getElementById('display');
             try {
                 display.value = eval(display.value);
             } catch {
                 display.value = 'Error';
             }
         }
+
+        // Enable keyboard input
+        document.addEventListener('keydown', (event) => {
+            const validKeys = '0123456789+-*/.=C';
+            if (validKeys.includes(event.key)) {
+                if (event.key === 'C') {
+                    clearDisplay();
+                } else if (event.key === '=') {
+                    calculateResult();
+                } else {
+                    appendValue(event.key);
+                }
+            } else if (event.key === 'Backspace') {
+                display.value = display.value.slice(0, -1);
+            }
+        });
     </script>
 </body>
 </html>
