@@ -1,5 +1,20 @@
 <!-- BEGIN KURS.KZ INFORMER -->
-<a href="https://kurs.kz" target="_blank">
-    <img src="https://kurs.kz/informers/informer_graph.php?city=211" width="100" height="100" alt="https://kurs.kz/ - Курсы валют в обменных пунктах г. Алматы и других городах Казахстана" >
-</a>
+<div class="kurs-widget" style="max-width: 200px; margin: 20px auto; text-align: center;">
+  <a href="https://kurs.kz" target="_blank">
+    <img src="https://kurs.kz/informers/informer_graph.php?city=211" 
+         style="width: 100%; height: auto; border: 2px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s;"
+         alt="Курсы валют в обменных пунктах г. Алматы и других городах Казахстана">
+  </a>
+</div>
 <!-- END KURS.KZ INFORMER -->
+
+<script>
+  // Добавим небольшой эффект при наведении на виджет
+  const widgetImage = document.querySelector('.kurs-widget img');
+  widgetImage.addEventListener('mouseover', () => {
+    widgetImage.style.transform = 'scale(1.05)';
+  });
+  widgetImage.addEventListener('mouseout', () => {
+    widgetImage.style.transform = 'scale(1)';
+  });
+</script>
