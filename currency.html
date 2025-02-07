@@ -1,7 +1,7 @@
 <!-- BEGIN KURS.KZ INFORMER -->
 <div class="kurs-widget" style="max-width: 200px; margin: 20px auto; text-align: center;">
   <a href="https://kurs.kz" target="_blank">
-    <img src="https://kurs.kz/informers/informer_graph.php?city=211" 
+    <img id="kursInformer" src="https://kurs.kz/informers/informer_graph.php?city=211" 
          style="width: 100%; height: auto; border: 2px solid #ddd; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); transition: transform 0.3s;"
          alt="Курсы валют в обменных пунктах г. Алматы и других городах Казахстана">
   </a>
@@ -9,7 +9,7 @@
 <!-- END KURS.KZ INFORMER -->
 
 <script>
-  // Добавим небольшой эффект при наведении на виджет
+  // Эффект масштабирования при наведении
   const widgetImage = document.querySelector('.kurs-widget img');
   widgetImage.addEventListener('mouseover', () => {
     widgetImage.style.transform = 'scale(1.05)';
@@ -17,4 +17,16 @@
   widgetImage.addEventListener('mouseout', () => {
     widgetImage.style.transform = 'scale(1)';
   });
+
+  // Функция для обновления изображения
+  function refreshInformer() {
+    const img = document.getElementById('kursInformer');
+    // Получаем исходный URL без параметров
+    const baseUrl = img.src.split('?')[0];
+    // Добавляем уникальный параметр, чтобы обойти кэш
+    img.src = baseUrl + '?_=' + new Date().getTime();
+  }
+
+  // Обновляем информер каждые 10 минут (600000 миллисекунд)
+  setInterval(refreshInformer, 600000);
 </script>
