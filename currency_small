@@ -1,5 +1,31 @@
 <!-- BEGIN KURS.KZ INFORMER -->
-<a href="https://kurs.kz" target="_blank">
-    <img src="https://kurs.kz/informers/informer_graphmin.php?city=211" width="88" height="31" alt="https://kurs.kz/ - Курсы валют в обменных пунктах г. Алматы и других городах Казахстана" >
-</a>
+<div class="kurs-widget" style="max-width: 120px; margin: 20px auto; text-align: center;">
+  <a href="https://kurs.kz" target="_blank">
+    <img id="kursInformer" src="https://kurs.kz/informers/informer_graphmin.php?city=211" 
+         style="width: 100%; height: auto; border: 1px solid #ccc; border-radius: 5px; transition: transform 0.3s;" 
+         alt="Курсы валют в обменных пунктах г. Алматы и других городах Казахстана">
+  </a>
+</div>
 <!-- END KURS.KZ INFORMER -->
+
+<script>
+  // Добавляем эффект масштабирования при наведении курсора
+  const widgetImage = document.querySelector('.kurs-widget img');
+  widgetImage.addEventListener('mouseover', () => {
+    widgetImage.style.transform = 'scale(1.1)';
+  });
+  widgetImage.addEventListener('mouseout', () => {
+    widgetImage.style.transform = 'scale(1)';
+  });
+
+  // Функция для обновления информера, обходя кэш браузера
+  function refreshInformer() {
+    const img = document.getElementById('kursInformer');
+    const baseUrl = img.src.split('?')[0]; // базовый URL без параметров
+    // Обновляем изображение, добавляя параметр с текущей меткой времени
+    img.src = baseUrl + '?city=211&_=' + new Date().getTime();
+  }
+
+  // Обновление информера каждые 10 минут (600000 миллисекунд)
+  setInterval(refreshInformer, 600000);
+</script>
